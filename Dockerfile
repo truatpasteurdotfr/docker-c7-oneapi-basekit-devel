@@ -8,8 +8,8 @@ MAINTAINER Tru Huynh <tru@pasteur.fr>
 RUN yum -y update && yum -y upgrade && \
         yum -y install wget bzip2 gcc gcc-c++ gcc-gfortran make && \
 	yum -y clean all
-RUN wget https://registrationcenter-download.intel.com/akdlm/irc_nas/18236/l_BaseKit_p_2021.4.0.3422_offline.sh -O - | \
-    bash -s -- \
+RUN wget https://registrationcenter-download.intel.com/akdlm/irc_nas/18236/l_BaseKit_p_2021.4.0.3422_offline.sh && \
+    bash l_BaseKit_p_2021.4.0.3422_offline.sh    \
     --log /l_BaseKit_p_2021.4.0.3422_offline.log \
     --remove-extracted-files yes \
     -a \
@@ -17,5 +17,6 @@ RUN wget https://registrationcenter-download.intel.com/akdlm/irc_nas/18236/l_Bas
      --cli \
      --eula accept \
      --intel-sw-improvement-program-consent decline \
-     --silent
+     --silent && \
+     /bin/rm l_BaseKit_p_2021.4.0.3422_offline.sh
 
